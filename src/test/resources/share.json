@@ -1,4 +1,12 @@
 {
-	"url": "http://db.tt/LnS1qL1q", 
-	"expires": "Sun, 15 Jan 2012 15:24:47 +0000"
+   "id": "someid",
+   "size": 12265,
+   "tag": "folder",
+   "name": "somename",
+   "path_display": "/file3.json",
+   "thumb_exists": false,
+   "modified": "Fri, 16 Dec 2011 12:24:07 +0000",
+   "rev": "8e02a9405f",
+   "url": "https://www.dropbox.com/s/2sn712vy1ovegw8/Prime_Numbers.txt?dl=0"
 }
+    

@@ -1,7 +1,5 @@
 package org.springframework.social.dropbox.api;
 
-import java.math.BigInteger;
-
 /**
  * 
  * Dropbox User Profile
@@ -9,55 +7,37 @@ import java.math.BigInteger;
  * @author Bryce Fischer
  */
 public class DropboxUserProfile {
-    private String country;
-    private final String referralLink;
-    private String displayName;
-    private final String email;
-    private BigInteger uid;
-    private BigInteger sharedQuota;
-    private BigInteger quota;
-    private BigInteger normalQuota;
+	private String country;
+	private final String referralLink;
+	private final String email;
+	private String accountId;
+	private String displayName;
 
-    public DropboxUserProfile(BigInteger uid, String displayName, String email, String country, String referralLink, BigInteger sharedQuota, BigInteger quota, BigInteger normalQuota) {
-        this.uid = uid;
-        this.displayName = displayName;
-        this.email = email;
-        this.country = country;
-        this.referralLink = referralLink;
-        this.sharedQuota = sharedQuota;
-        this.quota = quota;
-        this.normalQuota = normalQuota;
-    }
+	public DropboxUserProfile(String accountId, String displayName, String email, String country, String referralLink) {
+		this.accountId = accountId;
+		this.displayName = displayName;
+		this.email = email;
+		this.country = country;
+		this.referralLink = referralLink;
+	}
 
-    public String getCountry() {
-        return country;
-    }
+	public String getCountry() {
+		return country;
+	}
 
-    public String getDisplayName() {
-        return displayName;
-    }
+	public String getAccountId() {
+		return accountId;
+	}
 
-    public BigInteger getSharedQuota() {
-        return sharedQuota;
-    }
+	public String getReferralLink() {
+		return referralLink;
+	}
 
-    public BigInteger getQuota() {
-        return quota;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public BigInteger getNormalQuota() {
-        return normalQuota;
-    }
-
-    public BigInteger getUid() {
-        return uid;
-    }
-
-    public String getReferralLink() {
-        return referralLink;
-    }
-
-    public String getEmail() {
-        return email;
-    }
+	public String getDisplayName() {
+		return displayName;
+	}
 }

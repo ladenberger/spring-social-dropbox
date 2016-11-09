@@ -13,32 +13,33 @@ import org.springframework.web.client.HttpClientErrorException;
  * @author Robert Drysdale
  */
 public class DropboxAdapter implements ApiAdapter<Dropbox> {
-    @Override
-    public boolean test(Dropbox dropboxApi) {
-        try {
-            dropboxApi.getUserProfile();
-            return true;
-        } catch (HttpClientErrorException e) {
-            return false;
-        }
-    }
+	@Override
+	public boolean test(Dropbox dropboxApi) {
+		try {
+			dropboxApi.getUserProfile();
+			return true;
+		} catch (HttpClientErrorException e) {
+			return false;
+		}
+	}
 
-    @Override
-    public void setConnectionValues(Dropbox dropboxApi, ConnectionValues values) {
-        DropboxUserProfile profile = dropboxApi.getUserProfile();
-        values.setProviderUserId(profile.getUid().toString());
-        values.setDisplayName(profile.getDisplayName());
-        values.setProfileUrl(profile.getReferralLink());
-    }
+	@Override
+	public void setConnectionValues(Dropbox dropboxApi, ConnectionValues values) {
+		DropboxUserProfile profile = dropboxApi.getUserProfile();
+		values.setProviderUserId(profile.getAccountId());
+		values.setDisplayName(profile.getDisplayName());
+		values.setProfileUrl(profile.getReferralLink());
+	}
 
-    @Override
-    public UserProfile fetchUserProfile(Dropbox dropboxApi) {
-        DropboxUserProfile profile = dropboxApi.getUserProfile();
-        return new UserProfileBuilder().setName(profile.getDisplayName()).setUsername(profile.getEmail()).setEmail(profile.getEmail()).build();
-    }
+	@Override
+	public UserProfile fetchUserProfile(Dropbox dropboxApi) {
+		DropboxUserProfile profile = dropboxApi.getUserProfile();
+		return new UserProfileBuilder().setName(profile.getDisplayName()).setUsername(profile.getEmail())
+				.setEmail(profile.getEmail()).build();
+	}
 
-    @Override
-    public void updateStatus(Dropbox dropboxApi, String s) {
-        // Not Supported
-    }
+	@Override
+	public void updateStatus(Dropbox dropboxApi, String s) {
+		// Not Supported
+	}
 }
